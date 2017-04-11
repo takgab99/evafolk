@@ -57,15 +57,8 @@
 
 {% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
 
-{# Header #}
-<div role="heading" class="header-container {{ container }} js-quickedit-header-content margin-top-35 background-top">
-    <div class="row">
-        <div class="col-sm-12 text-center center-block" role="heading">
-            {% if page.header %}
-                {{ page.header }}
-            {% endif %}
-        </div>
-    </div>
+<div class="background-top">
+
 </div>
 
 <div class="background">
@@ -109,6 +102,17 @@
     {% endblock %}
 {% endif %}
 
+{# Header #}
+<div role="heading" class="header-container {{ container }} js-quickedit-header-content margin-top-35">
+    <div class="row">
+        <div class="col-sm-12 text-center center-block" role="heading">
+            {% if page.header %}
+                {{ page.header }}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
 {# Main #}
 {% block main %}
     <div role="main" class="main-container {{ container }} position-relative-z js-quickedit-main-content">
@@ -117,8 +121,8 @@
             {# Content #}
             {% set content_classes = [
             page.sidebar_first and page.sidebar_second ? 'col-sm-6',
-            page.sidebar_first and page.sidebar_second is empty ? 'col-sm-9',
-            page.sidebar_second and page.sidebar_first is empty ? 'col-sm-9',
+            page.sidebar_first and page.sidebar_second is empty ? 'col-sm-10 col-sm-offset-1',
+            page.sidebar_second and page.sidebar_first is empty ? 'col-sm-10 col-sm-offset-1',
             page.sidebar_first is empty and page.sidebar_second is empty ? 'col-sm-12'
             ] %}
             <section{{ content_attributes.addClass(content_classes) }}>
